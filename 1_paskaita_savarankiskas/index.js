@@ -29,12 +29,19 @@ app.get("/randomColorsArr", (req, res) => {
 });
 
 
-
+/*
 app.get("/randomPlaces", (req, res) => {
-    req.get("casual");
-    res.send(casual.rgb_array);
+    const places = [];
+    const numPlaces = Math.floor(Math.random() * 5) + 1;
+    for (let i = 0; i < numPlaces; i++) {
+        const place = {
+            country: casual.country,
+            city: casual.city,
+            address: casual._address
+        }
+    }
 });
-
+*/
 /*const name = `${casual.name_prefix} ${casual.first_name} ${casual.last_name}`;
 console.log(name);*/
 
