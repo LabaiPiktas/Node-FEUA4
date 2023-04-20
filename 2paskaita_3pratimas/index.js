@@ -17,7 +17,6 @@ app.get("/products", (req, res) => {
 });
 
 app.post("/products", (req, res) => {
-    
     products.push("Degtinė");
     res.send(products);
   });

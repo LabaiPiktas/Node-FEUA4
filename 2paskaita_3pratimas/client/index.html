@@ -10,9 +10,15 @@
     
     <h1>Add Product</h1>
     <form>
+       
+
+
+
         <label for="productName">Product name:</label>
         <input type="text" id="productName" name="productName"><br>
-        <button type="button" id="button" onclick="addProduct()">Add product</button>
+        <button type="button" onclick="addProduct()">Add product</button>
+        <label for="productPrice">Price (€):</label>
+        <input type="number" id="productPrice" step="0.01">
     </form>
     <ul id="productList">
     </ul>
