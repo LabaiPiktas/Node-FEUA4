@@ -19,7 +19,7 @@ res.send(data);
 // 2
 app.get("/cars/:model", (req, res) => {
     const model = req.params.model;
-    const filteredClients = data.filter((client) => client.car.toLowerCase() === model.toLocaleLowerCase());
+    const filteredClients = data.filter((client) => client.car.toLowerCase() === model.toLowerCase());
     res.send(filteredClients);
 });
 
