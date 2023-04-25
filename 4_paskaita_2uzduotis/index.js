@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 
 // 2 
 
-app.get("/items/:category", (req, res) => {
+app.get("/items/item/:category", (req, res) => {
     const category = req.params.category;
     const filteredCategory = data.filter((client) => client.category.toLowerCase() === category.toLowerCase());
     res.send(filteredCategory);
