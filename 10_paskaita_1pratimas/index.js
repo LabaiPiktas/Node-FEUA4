@@ -177,20 +177,20 @@ app.get('/highestIncome', async (req, res) => {
   }
 });
 // 8 neveikia!
+
 app.get('/dynamicUsersCount/:name', async (req, res) => {
   try {
     const { name } = req.params;
     const con = await client.connect();
-    const data = await con
-      .db('ManoDoumenuBaze')
+    const count = await con
+      .db('ManoDuomenuBaze')
       .collection('fakeUsers')
-      .findOne({ name });
+      .countDocuments({ name });
     await con.close();
 
-    if (!data) {
+    if (count === 0) {
       res.status(404).send('User not found');
     } else {
-      const count = data.dynamicUsersCount || 0;
       res.send({ count });
     }
   } catch (error) {
