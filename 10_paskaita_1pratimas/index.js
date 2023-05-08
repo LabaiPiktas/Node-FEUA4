@@ -176,7 +176,7 @@ app.get('/highestIncome', async (req, res) => {
     res.status(500).send(error);
   }
 });
-// 8 neveikia!
+// 8
 
 app.get('/dynamicUsersCount/:name', async (req, res) => {
   try {
