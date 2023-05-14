@@ -2,6 +2,7 @@ const membershipsList = document.getElementById('memberships');
 const addMembershipForm = document.getElementById('addMembershipForm');
 
 // Function to fetch the memberships and display them on the page
+// Function to fetch the memberships and display them on the page
 async function fetchMemberships() {
   const response = await fetch('http://localhost:3000/memberships');
   const memberships = await response.json();
@@ -16,7 +17,7 @@ async function fetchMemberships() {
 
     const price = document.createElement('p');
     price.classList.add('membership-price');
-    price.textContent = '$' + membership.price;
+    price.textContent = membership.price;
     priceAndName.appendChild(price);
 
     const name = document.createElement('h3');

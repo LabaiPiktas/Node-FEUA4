@@ -73,17 +73,16 @@ app.delete('/memberships/:id', async (req, res) => {
 // 4
 // asc - ascending - didėjimo tvarka
 // dsc - descending - mažėjimo tvarka
-
 app.get('/users/:order', async (req, res) => {
   try {
-    const { order } = req.params;
-    const sort = order === 'asc' ? 1 : -1;
+    const { type } = req.params;
+    const sort = type === 'asc' ? 1 : -1;
     const con = await client.connect();
     const data = await con
       .db(dbName)
       .collection('users')
       .find()
-      .sort({ name: sort })
+      .sort({ rating: sort })
       .toArray();
     await con.close();
     res.send(data);
@@ -114,21 +113,6 @@ app.post('/users', async (req, res) => {
 });
 // users get
 app.get('/users', async (req, res) => {
-  try {
-    const con = await client.connect();
-    const data = await con.db(dbName).collection('users').find().toArray();
-    await con.close();
-    if (data.length === 0) {
-      res.status(404).send('No users found');
-    } else {
-      res.send(data);
-    }
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
-
-app.get('/', async (req, res) => {
   try {
     const con = await client.connect();
     const data = await con.db(dbName).collection('users').find().toArray();

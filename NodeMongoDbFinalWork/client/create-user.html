@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style-create-user.css">
+</head>
+<body>
+    
+<header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Memberships</a></li>
+        <li><a href="user-menagement.html">Users</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+<form id="add-user-form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="surname">Surname:</label>
+    <input type="text" id="surname" name="surname" required>
+  
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+  
+    <label for="ipAddress">IP Address:</label>
+    <input type="text" id="ipAddress" name="ipAddress" required>
+  
+    <label for="membershipType">Membership Type:</label>
+    <select id="membershipType" name="membershipType" required>
+      <option value="">-- Select a membership type --</option>
+      <option value="645bd3384d531fbb9b826a6a">Trial</option>
+      <option value="645bd45c4d531fbb9b826a6b">Silver</option>
+      <option value="645bd4db4d531fbb9b826a6c">Bronze</option>
+      <option value="645bd52d4d531fbb9b826a6d">Gold</option>
+      <option value="645bd5794d531fbb9b826a6e">Platinum</option>
+      <option value="645bdac2b1e2188f93224656">Free Trial</option>
+      <option value="646126b361ed5f3fe5106144">Super Gold</option>
+    </select>
+  
+    <button type="button" id="cancel-btn" class="btn">Cancel</button>
+
+    <button type="submit" id="submit-btn" class="btn">New User</button>
+    
+  </form>
+  <footer>
+    <p>Copyright &copy; 2023 Membership Manager</p>
+  </footer>
+  
+</main>
+<script src="./script.js"></script>
+<script src="create-user-index.js"></script>
+</body>
+</html>
