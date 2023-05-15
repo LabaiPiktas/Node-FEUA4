@@ -5,6 +5,7 @@ body {
 }header {
     background-color: #f2f2f2;
     padding: 20px;
+    font-size: large;
   }
   
   nav ul {
@@ -25,10 +26,39 @@ body {
     text-decoration: none;
   }
   nav ul li a:hover {
-    color: #842a2a;
+    color: blue;
     font-weight: bold;
     }
-  
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+            
+    }
+    h1 {
+      display: inline-block;
+      margin: 0;
+      
+    }
+    #sort-btn {
+      font-size: large;
+      font-weight: bold;
+      display: block;
+      margin: 0 auto;
+      background-color: #bab9b9;
+      color: black;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #button-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-right: 20px;
+      
+    }
   #add-user-btn {
     background-color: blue;
     color: white;
@@ -36,6 +66,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+   margin-left: 20px;
   }
   
   .card {

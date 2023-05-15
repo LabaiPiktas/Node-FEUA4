@@ -91,41 +91,6 @@ app.get('/users/:order', async (req, res) => {
     res.status(500).send(error);
   }
 });
-// 4
-/*app.get('/users/:order', async (req, res) => {
-  try {
-    const { order } = req.params;
-    const sort = order === 'asc' ? 1 : -1;
-    const con = await client.connect();
-    const users = await con
-      .db(dbName)
-      .collection('users')
-      .find()
-      .sort({ name: sort })
-      .toArray();
-
-    const membershipIds = users.map(user => ObjectId(user.membershipType));
-    const memberships = await con
-      .db(dbName)
-      .collection('memberships')
-      .find({ _id: { $in: membershipIds } })
-      .toArray();
-
-    const usersWithMemberships = users.map(user => {
-      const membership = memberships.find(m => m._id.toString() === user.membershipType);
-      return {
-        ...user,
-        membershipType: membership ? membership.name : 'Unknown',
-      };
-    });
-
-    await con.close();
-    res.send(usersWithMemberships);
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});*/
-
 // 5
 app.post('/users', async (req, res) => {
   try {
@@ -177,10 +142,6 @@ app.get('/', async (req, res) => {
     res.status(500).send(error);
   }
 });
-// ...
-
-// ...
-
 // Fetch a single membership by ID
 app.get('/memberships/:id', async (req, res) => {
   try {
@@ -201,10 +162,20 @@ app.get('/memberships/:id', async (req, res) => {
     res.status(500).send(error);
   }
 });
-
-// ...
-
-
+app.delete('/users/:id', async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const con = await client.connect();
+    const data = await con
+      .db(dbName)
+      .collection('users')
+      .deleteOne({ _id: new ObjectId(userId) });
+    await con.close();
+    res.send(data);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server is running on the ${port}`);

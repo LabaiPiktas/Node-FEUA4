@@ -4,31 +4,33 @@ let sortOrder = 1; // 1 for ascending, -1 for descending
 
 function sortUsers() {
   fetch(`http://localhost:3000/users/${sortOrder === 1 ? 'asc' : 'desc'}`)
-    .then(response => response.json())
-    .then(users => {
+    .then((response) => response.json())
+    .then((users) => {
       cardContainer.innerHTML = '';
 
-      const membershipIds = users.map(user => user.membershipType);
+      const membershipIds = users.map((user) => user.membershipType);
       fetchMemberships(membershipIds)
-        .then(memberships => {
-          users.forEach(user => {
+        .then((memberships) => {
+          users.forEach((user) => {
             const card = document.createElement('div');
             card.classList.add('card');
 
-            const name = document.createElement('h2');
-            name.textContent = user.name;
+            const fullName = document.createElement('h2');
+            fullName.textContent = `${user.name} ${user.surname}`;
 
             const email = document.createElement('p');
             email.textContent = `Email: ${user.email}`;
 
             const membership = document.createElement('p');
             const membershipName = memberships[user.membershipType];
-            membership.textContent = `Membership: ${membershipName || 'Unknown'}`;
+            membership.textContent = `Membership: ${
+              membershipName || 'Unknown'
+            }`;
 
             const ipAddress = document.createElement('p');
             ipAddress.textContent = `IP Address: ${user.ipAddress}`;
 
-            card.appendChild(name);
+            card.appendChild(fullName);
             card.appendChild(email);
             card.appendChild(membership);
             card.appendChild(ipAddress);
@@ -36,17 +38,17 @@ function sortUsers() {
             cardContainer.appendChild(card);
           });
         })
-        .catch(error => console.error(error));
+        .catch((error) => console.error(error));
     })
-    .catch(error => console.error(error));
+    .catch((error) => console.error(error));
 }
 
 function fetchMemberships(membershipIds) {
   return fetch('http://localhost:3000/memberships')
-    .then(response => response.json())
-    .then(memberships => {
+    .then((response) => response.json())
+    .then((memberships) => {
       const membershipMap = {};
-      memberships.forEach(membership => {
+      memberships.forEach((membership) => {
         membershipMap[membership._id] = membership.name;
       });
       return membershipMap;
